@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+#include <ctype.h>
+
+main(){
+setlocale(LC_ALL, "");
+float valorTotal = 0;
+int qtd, codigo = 1;
+char resposta = 'S';
+
+
+while(codigo!=0){
+	printf("\n\t=====>Sistema de valor total dos pedidos dos clientes<=====");
+	printf("\n\nDigite o código do produto: ");
+	scanf("%i",&codigo);
+
+	switch(codigo){
+		//Cachorro quente
+		case 1:
+			printf("\nDigite a quantidade ");
+			scanf("%i",&qtd);
+			valorTotal = valorTotal+(1.50*qtd);
+	
+		break;
+		//Hamburguer
+		case 2:
+			printf("\nDigite a quantidade ");
+			scanf("%i",&qtd);
+			valorTotal = valorTotal+(2.00*qtd);
+		break;
+		//Cheeseburguer
+			case 3:
+			printf("\nDigite a quantidade ");
+			scanf("%i",&qtd);
+			valorTotal = valorTotal+(2.50*qtd);
+		break;
+		//Eggcheeseburguer
+			case 4:
+			printf("\nDigite a quantidade ");
+			scanf("%i",&qtd);
+			valorTotal = valorTotal+(3.00*qtd);
+		break;
+		//Refrigerante
+			case 5:
+			printf("\nDigite a quantidade ");
+			scanf("%i",&qtd);
+			valorTotal = valorTotal+(1.50*qtd);			
+		break;
+		default: printf("\n\t ===> Pedido finalizado! <===\n\t ===> Valor total do pedido: %.2f <===",valorTotal);
+		codigo = 0;
+		break;
+	}  
+	
+  }
+
+}
