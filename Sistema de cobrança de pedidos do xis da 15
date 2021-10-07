@@ -7,7 +7,6 @@ main(){
 setlocale(LC_ALL, "");
 float valorTotal = 0;
 int qtd, codigo = 1;
-char resposta = 'S';
 
 
 while(codigo!=0){
