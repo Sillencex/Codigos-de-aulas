@@ -1,23 +1,111 @@
-#include<stdio.h>
-#include<locale.h>
-/*Chico tem 1,50 metros e cresce 2 centímetros por ano, enquanto Zé tem 1,10 metros e
-cresce 3 centímetros por ano. Construa um algoritmo que calcule e imprima quantos anos
-serão necessários para que Zé seja maior que Chico. */
-main(){
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+#include <ctype.h>
+
+/*Foi realizada uma pesquisa de algumas características físicas da população de uma certa
+região, a qual coletaram os seguintes dados referentes a cada habitante para serem
+analisados:
+* sexo (masculino e feminino)
+* cor dos olhos (azuis, verdes ou castanhos)
+* cor dos cabelos (louros, castanhos, pretos)
+* idade
+Faça um algoritmo que determine e escreva:
+* a maior idade dos habitantes;
+* a quantidade de indivíduos do sexo feminino cuja idade está entre 18 e
+* 35 anos, inclusive;
+* a quantidade de indivíduos que tenham olhos verdes e cabelos louros;
+O final do conjunto de habitantes é reconhecido pelo valor -1 informado como idade*/
+
+main()
+{
 	setlocale(LC_ALL,"");
-	float chico = 1.50, ze = 1.10;
-	int ano = 1;
+	int idade, idadeMaior = 0, idadeMulher = 0, olhoVerde = 0, cabeloLouro = 0;
+	char sexo, olho, cabelo;
 	
-	while(ze<=chico)
+	
+	do
 	{
-		printf("\naltura de chico = %.2f",chico);
-		printf("\naltura de ze = %.2f",ze);
-		printf("\nano = %i",ano);
-		printf("\n\n");
-		chico+=0.02;
-		ze+=0.03;
-		ano++;
-	}
+		printf("\nDigite sua idade ");		
+		scanf("%i",&idade);		
+		
+		if(idade!=-1)
+		{
+			if(idade>idadeMaior)
+			{
+				idadeMaior = idade;
+			}
+		
+		
+		do{
+			printf("\nDigite H = Homem");
+			printf("\nDigite M = Mulher");
+			printf("\n\nInforme o sexo: ");
+			fflush(stdin);
+			scanf("%c",&sexo);
+			sexo = toupper(sexo);
+			
+			if(sexo!='M' && sexo!='H')
+			{
+				printf("\nErro ===>O sexo informado é invalido\n");
+			}
+			
+		}while(sexo!='M' && sexo!='H');
+		
+			if(idade>=18 && idade<=35 && sexo=='M')
+			{
+				idadeMulher++;
+			}
+			
+			do{
+				printf("\nDigite A = Azuis");
+				printf("\nDigite V = Verdes");
+				printf("\nDigite C = Castanhos");
+				printf("\n\nInforme a cor dos olhos: ");
+				fflush(stdin);
+				scanf("%c",&olho);
+				olho = toupper(olho);
+				
+				if(olho!='A' && olho!='V' && olho!='C')
+				{
+					printf("ERRO ===>A cor informada é inválida.");
+				}
+			}while(olho!='A' && olho!='V' && olho!='C');
+			
+			if(olho == 'V')
+			{
+				olhoVerde++;
+			}
+			
+			do{
+				printf("\nDigite L = Louro");
+				printf("\nDigite P = Pretos");
+				printf("\nDigite C = Castanhos");
+				printf("\n\nInforme a cor do cabelo: ");
+				fflush(stdin);
+				scanf("%c",&cabelo);
+				cabelo = toupper(cabelo);
+				
+				if(cabelo!='L' && cabelo!='P' && cabelo!='C')
+				{
+					printf("\nA cor do cabelo informada é inválida");
+				}
+			}while(cabelo!='L' && cabelo!='P' && cabelo!='C');
+			
+			if(cabelo=='L')
+			{
+				cabeloLouro++;
+			}
+		
+		}
 	
-	printf("\nVai levar %i anos",ano);
+	}while(idade!=-1);
+	printf("\n\n\t ===> Resultado da pesquisa de caratcteristicas físicas da população. <===\n");
+	printf("\nMaior idade entre os habitantes: %i", idadeMaior);
+	printf("\nIdade de mulheres com idade entre 18 e 35 anos: %i", idadeMulher);
+	printf("\nNúmero de pessoas com olhos verdes: %i", olhoVerde);
+	printf("\nNúmero de pessoas com cabelos louros: %i", cabeloLouro);
+
+
+
 }
